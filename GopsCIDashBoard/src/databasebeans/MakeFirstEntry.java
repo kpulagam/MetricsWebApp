@@ -1,0 +1,79 @@
+package databasebeans;
+
+public class MakeFirstEntry {
+	
+	private String teamName= "";
+	private String testSuiteName="";
+	private String contactPerson = "";
+	private String contactEmailAddress = "";
+	private String actionMessage = "";
+	
+	public String getActionMessage() {
+		return actionMessage;
+	}
+	public void setActionMessage(String actionMessage) {
+		this.actionMessage = actionMessage;
+	}
+	public MakeFirstEntry(){
+		
+	}
+	public MakeFirstEntry(String teamName,String testSuiteName,String contactPerson,String contactEmailAddress){
+		setTeamName(teamName); 
+		setTestSuiteName(testSuiteName);
+		setContactPerson(contactPerson);
+		setContactEmailAddress(contactEmailAddress);
+		
+	}
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	public String getTestSuiteName() {
+		return testSuiteName;
+	}
+	public void setTestSuiteName(String testSuiteName) {
+		this.testSuiteName = testSuiteName;
+	}
+	public String getContactPerson() {
+		return contactPerson;
+	}
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+	public String getContactEmailAddress() {
+		return contactEmailAddress;
+	}
+	public void setContactEmailAddress(String contactEmailAddress) {
+		this.contactEmailAddress = contactEmailAddress;
+	}
+	
+	public boolean validateDetails(){
+		
+		if(teamName.equals("")){
+			setActionMessage("Team Name Cannot Be Empty");
+			return false;
+		}
+		else if(testSuiteName.equals("")){
+			setActionMessage("testSuiteName Cannot Be Empty");
+			return false;
+		}
+		else if(contactPerson.equals("")){
+			setActionMessage("contactPerson Cannot Be Empty");
+			return false;
+		}
+		else if(contactEmailAddress.equals("")){
+			setActionMessage("contactEmailAddress Cannot Be Empty");
+			return false;
+		}
+		else{
+			return true;
+		}		
+		
+		
+	}
+	
+	
+
+}

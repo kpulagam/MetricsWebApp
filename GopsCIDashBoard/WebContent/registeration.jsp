@@ -13,32 +13,16 @@
 <title>CI data Registration</title>
 </head>
 <body>
-<jsp:useBean id="userDetails" class="databasebeans.MakeFirstEntry" scope = "session"/>
-<jsp:setProperty  name="userDetails" property="*"/>
 
-<%
+<h2><%=request.getAttribute("actionMessage") %></h2><br/>
 
-String regsubmit = request.getParameter("regsubmit");
-if(regsubmit!=null && regsubmit.equals("formsubmit")){
-	if(userDetails.validateDetails()){
-		request.getRequestDispatcher("/CIDashBoardHome").forward(request, response);
-	}
-	else{
-		
-	}
-}
-
-
-%>
-<h2><jsp:getProperty name = "userDetails" property="actionMessage"/></h2><br/>
-
-<form action="/GopsCIDashBoard/registeration.jsp" method=post>
-<input type="hidden" name = "regsubmit" value="formsubmit">
+<form action="/GopsCIDashBoard/CIDashBoardHome" method="post" >
+<input type="hidden" name = "regsubmit" value="register">
 *All of the below fields are mandatory!<br/>
-Team Name      :<input type ="text" name="teamName"  value=<jsp:getProperty name="userDetails" property="teamName"/>><br/>
-Test Suite Name:<input type ="text" name="testSuiteName" value=<jsp:getProperty name="userDetails" property="testSuiteName"/>><br/>
-Contact Person :<input type ="text" name="contactPerson" value=<jsp:getProperty name="userDetails" property="contactPerson"/>><br/>
-Contact EamilID:<input type ="text" name="contactEmailAddress" value=<jsp:getProperty name="userDetails" property="contactEmailAddress"/>><br/>
+Team Name      :<input type ="text" name="teamName"  value=<%= request.getAttribute("teamName")%>><br/>
+Test Suite Name:<input type ="text" name="testSuiteName" value=<%= request.getAttribute("testSuiteName")%>><br/>
+Contact Person :<input type ="text" name="contactPerson" value=<%= request.getAttribute("contactPerson")%>><br/>
+Contact EamilID:<input type ="text" name="contactEmailAddress" value=<%= request.getAttribute("contactEmailAddress")%>><br/>
 <input type = "submit" value = "Register">
 
 

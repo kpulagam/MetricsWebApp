@@ -16,7 +16,7 @@
 <body>
 
 <form action="/GopsCIDashBoard/CIDashBoardHome" method="post" name="submitform">
-<select name="Suite Name" >
+<select name="sName" >
 	<option >AdminDevelopBranchCITestSuite</option>
 	<option>AdminReleaseBranchCITestSuite</option>
 	<option>MasterBranchCITestSuite</option>

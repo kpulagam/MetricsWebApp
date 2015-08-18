@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import databasebeans.RegisterCIDetails;
+
 /**
  * Servlet implementation class HomePage
  */
@@ -47,6 +49,12 @@ public class CIDashBoardHomePageController extends HttpServlet {
 
 			if (action.equals("register")) {
 
+				request.setAttribute("teamName", "");
+				request.setAttribute("testSuiteName", "");
+				request.setAttribute("contactPerson", "");
+				request.setAttribute("contactEmailAddress", "");
+				request.setAttribute("actionMessage", "");
+
 				page = "/registeration.jsp";
 
 			} else if (action.equals("getData")) {
@@ -75,24 +83,51 @@ public class CIDashBoardHomePageController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// doGet(request, response);
-		String suite = request.getParameter("Suite Name");
-		String action = request.getParameter("action");
+
+		String suite = request.getParameter("sName");
+
 		String regSubmit = request.getParameter("regsubmit");
 		String page = null;
 
-		if (suite == null && regSubmit == null || action != null) {
+		if (suite == null && regSubmit == null) {
 
 			page = "/error.jsp";
 
 		}
 
 		if (suite != null) {
+
 			page = "/cidata.jsp";
 
-		} else if (regSubmit != null && regSubmit.equals("formsubmit")) {
-			page = "/registrationsuccessfull.jsp";
+		} else if (suite == null && regSubmit != null) {
+
+			request.setAttribute("teamName", request.getParameter("teamName"));
+			request.setAttribute("testSuiteName", request.getParameter("testSuiteName"));
+			request.setAttribute("contactPerson", request.getParameter("contactPerson"));
+			request.setAttribute("contactEmailAddress", request.getParameter("contactEmailAddress"));
+			// request.setAttribute("actionMessage",
+			// request.getParameter("validationMessage"));
+
+			if (regSubmit.equals("register")) {
+
+				RegisterCIDetails registerDetails = new RegisterCIDetails(request.getParameter("teamName"),
+						request.getParameter("testSuiteName"), request.getParameter("contactPerson"),
+						request.getParameter("contactEmailAddress"));
+
+				if (registerDetails.validateDetails()) {
+
+					page = "/registrationsuccessfull.jsp";
+
+				}
+
+				else {
+					request.setAttribute("actionMessage", registerDetails.getActionMessage());
+					page = "/registeration.jsp";
+
+				}
+
+			}
+
 		}
 
 		getServletContext().getRequestDispatcher(page).forward(request, response);

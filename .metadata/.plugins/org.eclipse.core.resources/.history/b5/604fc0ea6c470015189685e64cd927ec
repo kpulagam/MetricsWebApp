@@ -1,0 +1,185 @@
+package databasebeans;
+
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoException;
+import com.mongodb.ReadPreference;
+import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class GetCIData {
+
+	private String dbName = null;
+
+	private String serverIp = null;
+	private int portNumber;
+
+	private static final MongoClientOptions options = MongoClientOptions.builder().connectionsPerHost(100).build();
+	private static MongoClient client;
+
+	public GetCIData() throws IOException {
+		Properties prop = new Properties();
+		FileInputStream ip = new FileInputStream(new File("src/main/resources/databaseconfig.properties"));
+		prop.load(ip);
+		this.portNumber = Integer.parseInt(prop.getProperty("serverPort").trim().toString());
+		this.serverIp = prop.getProperty("serverIP").trim().toString();
+		this.dbName = prop.getProperty("dataBaseName").trim().toString();
+
+		client = new MongoClient(new ServerAddress(serverIp, portNumber), options);
+
+	}
+
+	public synchronized int getLatestBuildID(String suiteName) {
+		int buildId = 0;
+		try {
+
+			final MongoDatabase testRunDB = client.getDatabase(dbName).withReadPreference(ReadPreference.secondary());
+
+			MongoCollection<Document> buildDataDocument = testRunDB.getCollection("buildDataCollection");
+			Bson builDatafilter = eq("suiteName", suiteName);
+			Bson buildDataProjection = new Document("istestRunCompleted", 1).append("_id", 0);
+			if (buildDataDocument.find(builDatafilter).iterator().hasNext()) {
+				buildId = buildDataDocument.find(builDatafilter).first().getInteger("buildNumber");
+
+				if (buildDataDocument.find(builDatafilter).projection(buildDataProjection).first()
+						.getBoolean("istestRunCompleted").equals(false)) {
+					System.err.println(
+							"There is a test run in progress, Hence Giving the build id of the previous run that has completed");
+					buildId--;
+				}
+
+			} else {
+				System.out.println("There is no test run with the given Suite Name");
+			}
+
+			System.out.println("The latest Build ID is: " + buildId);
+
+		} catch (NullPointerException e) {
+			System.out.println("Check the name of the suite file that you have provided");
+			e.printStackTrace();
+		} catch (MongoException e) {
+			System.out.println("There is an issue with Mongo DB connection");
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return buildId;
+
+	}
+
+	public List<Document> getMultipleRunsFailures(int numberOfRuns, String suiteName) {
+		List<Document> finalList = new ArrayList<>();
+		if (suiteName.equals(null) || suiteName.equals(""))
+			throw new NullPointerException("You should enter a suite name!");
+		if (numberOfRuns < 1)
+			throw new InvalidParameterException("The number of test runs that you have entered is less than 1");
+
+		final MongoDatabase testRunDB = client.getDatabase(dbName).withReadPreference(ReadPreference.secondary());
+
+		Bson projection = new Document("ClassName", 1).append("TestTagName", 1).append("_id", 0);
+		int buildNumber = getLatestBuildID(suiteName);
+
+		if (numberOfRuns > buildNumber) {
+			System.out.println("The number of test runs you have requested are"
+					+ " greater that the testruns recorded, will compare results from all of the runs recorded!");
+			numberOfRuns = buildNumber;
+
+		}
+
+		if (numberOfRuns == 1) {
+			List<Document> singleList = new ArrayList<>();
+			Bson oddfilter = and(eq("BuildNumber", 1), eq("Status", "Failed"));
+			testRunDB.getCollection(suiteName).find(oddfilter).projection(projection).into(singleList);
+			finalList.addAll(singleList);
+
+		}
+
+		else if (numberOfRuns > 1) {
+			int j = 1;
+			List<Document> evenList = new ArrayList<>();
+			List<Document> oddList = new ArrayList<>();
+
+			while (j < numberOfRuns) {
+
+				Bson oddfilter = and(eq("BuildNumber", buildNumber), eq("Status", "Failed"));
+				testRunDB.getCollection(suiteName).find(oddfilter).projection(projection).into(oddList);
+
+				if (finalList.isEmpty()) {
+
+					Bson evenfilter = and(eq("BuildNumber", --buildNumber), eq("Status", "Failed"));
+					testRunDB.getCollection(suiteName).find(evenfilter).projection(projection).into(evenList);
+
+				} else {
+					evenList.addAll(finalList);
+					finalList.clear();
+
+				}
+
+				for (Document oddDoc : oddList) {
+					for (Document evenDoc : evenList) {
+						if (evenDoc.get("ClassName").equals(oddDoc.get("ClassName"))) {
+							finalList.add(evenDoc);
+						}
+
+					}
+
+				}
+
+				j++;
+				buildNumber--;
+
+				oddList.clear();
+				evenList.clear();
+			}
+
+		}
+
+		else {
+			System.out.println("Looks like you have entered invalid number of test runs to be analysed!");
+		}
+
+		return finalList;
+
+	}
+
+	public List<Document> getFailuresForBuildId(String suiteName, int buildID) {
+
+		List<Document> failureList = new ArrayList<Document>();
+		try {
+			final MongoDatabase testRunDB = client.getDatabase(dbName).withReadPreference(ReadPreference.secondary());
+
+			Bson projection = new Document("ClassName", 1).append("TestTagName", 1).append("_id", 0);
+
+			Bson filter = and(eq("BuildNumber", buildID), eq("Status", "Failed"));
+			testRunDB.getCollection(suiteName).find(filter).projection(projection).into(failureList);
+
+		} catch (MongoException e) {
+			System.out.println("Encountered connectivity issue with Mongo DB");
+			e.printStackTrace();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return failureList;
+
+	}
+
+}

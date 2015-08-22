@@ -757,3 +757,29 @@
 2015-08-17 13:20:45,715 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2015-08-17 13:20:45,715 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-08-17 13:20:45,715 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\src\test\resources
+2015-08-19 08:49:20,269 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.paypal.test.gops.admin:CIDashBoardServer:0.0.1-SNAPSHOT @ C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\pom.xml.
+2015-08-19 08:49:20,269 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.paypal.test.gops.admin:CIDashBoardServer:0.0.1-SNAPSHOT @ C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\pom.xml.
+2015-08-19 08:49:22,758 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-19 08:49:22,774 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-08-19 08:49:22,783 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-19 08:49:22,783 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\src\test\resources
+2015-08-19 08:49:23,612 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.paypal.test.gops.admin:CIDashBoardServer:0.0.1-SNAPSHOT @ C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\pom.xml.
+2015-08-19 08:49:24,010 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-19 08:49:24,012 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-08-19 08:49:24,013 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-19 08:49:24,013 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\src\test\resources
+2015-08-20 12:28:12,537 [Worker-513] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://nexus.paypal.com/nexus/content/groups/public-all/org/mongodb/mongodb-driver/3.0.0-rc0/mongodb-driver-3.0.0-rc0-sources.jar
+2015-08-20 12:28:15,417 [Worker-513] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://nexus.paypal.com/nexus/content/groups/public-all/org/mongodb/mongodb-driver/3.0.0-rc0/mongodb-driver-3.0.0-rc0-sources.jar
+2015-08-20 12:28:15,497 [Worker-513] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.mongodb:mongodb-driver:3.0.0-rc0
+2015-08-20 12:28:15,697 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-20 12:28:15,697 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-08-20 12:28:15,697 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-20 12:28:15,697 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\src\test\resources
+2015-08-20 12:29:21,777 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-20 12:29:21,777 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-08-20 12:29:21,777 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-20 12:29:21,777 [Worker-521] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\src\test\resources
+2015-08-20 14:00:40,110 [Worker-544] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-20 14:00:40,110 [Worker-544] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-08-20 14:00:40,120 [Worker-544] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-20 14:00:40,120 [Worker-544] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kpulagam\ProjectWorkSpace\CITestData-Client\CIDashBoardServer\src\test\resources

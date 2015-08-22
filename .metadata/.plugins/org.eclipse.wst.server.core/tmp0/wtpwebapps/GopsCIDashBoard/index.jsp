@@ -18,10 +18,12 @@
 
 </div>
 
-<a href= "/GopsCIDashBoard/CIDashBoardHome?action=register">First Time User? Register Your CI Details!</a>
+<a href= "<%=request.getContextPath()+"/CIDashBoardHome?action=register"%>">First Time User? Register Your CI Details!</a>
 <p/>
-<a href= "/GopsCIDashBoard/CIDashBoardHome?action=getData">Take me to CI Dash Board</a>
+<a href= "<%=request.getContextPath()+"/CIDashBoardHome?action=getData"%>">Take me to CI Dash Board</a>
 <p/>
-<a href= "/GopsCIDashBoard/CIDashBoardHome?action=contact">Contact us, Happy to help You!</a>
+<a href= "<%=request.getContextPath()+"/CIDashBoardHome?action=contact"%>">Contact us, Happy to help You!</a>
+<p/>
+<a href= "<%=request.getContextPath()+"/CIDashBoardHome?action=admin" %>">Admin Dash Board</a>
 </body>
 </html>

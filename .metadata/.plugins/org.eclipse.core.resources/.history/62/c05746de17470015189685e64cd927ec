@@ -1,0 +1,22 @@
+package databasebeans;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
+import com.mongodb.ServerAddress;
+
+public class GetCIData {
+	
+	private CIMongoDataExtractionDAO cIMongoDataExtractionDAO =new CIMongoDataExtractionDAO("MetricsDB");;
+	private static final MongoClientOptions options = MongoClientOptions
+			.builder().connectionsPerHost(100).build();
+	private static MongoClient client = new MongoClient(new ServerAddress(
+			"10.244.180.225", 27017), options);
+	public GetCIData(){
+		
+		
+		
+	}
+	
+	
+
+}

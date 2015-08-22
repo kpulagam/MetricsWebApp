@@ -1,0 +1,14 @@
+package databasebeans;
+
+import dataaccessobjects.CIMongoDataExtractionDAO;
+
+public class GetCIData {
+	
+	private CIMongoDataExtractionDAO cIMongoDataExtractionDAO;
+	public GetCIData(){
+		
+		cIMongoDataExtractionDAO = new CIMongoDataExtractionDAO("MetricsDB");
+		
+	}
+
+}

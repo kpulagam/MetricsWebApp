@@ -17,13 +17,14 @@
     <servlet-name>CIDashBoardHomePageController</servlet-name>
     <url-pattern>/CIDashBoardHome</url-pattern>
   </servlet-mapping>
-  
-  <servlet>    
-    <servlet-name>CIDashBoardHomePage</servlet-name>
-    <jsp-file>/CIDashBoardHomePage.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CIDashBoardHomePage</servlet-name>
-    <url-pattern>/CIDashBoardHome1</url-pattern>
-  </servlet-mapping>
+  <context-param>
+  	<param-name>userName</param-name>
+  	<param-value>kpulagam</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>password</param-name>
+  	<param-value>D0n0tgue$$</param-value>
+  </context-param>
+
+
 </web-app>

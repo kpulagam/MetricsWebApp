@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;CIMongoDataManualExtractionDAO.java&apos; to &apos;GopsCIDashBoard/src/dataaccessobjects&apos;&#x0D;&#x0A;- Original project: &apos;CIDashBoardServer&apos;&#x0D;&#x0A;- Destination element: &apos;GopsCIDashBoard/src/dataaccessobjects&apos;&#x0D;&#x0A;- Original element: &apos;com.paypal.test.gops.admin.getdbdata.CIMongoDataManualExtractionDAO.java&apos;" description="Copy compilation unit" destination="=GopsCIDashBoard/src&lt;dataaccessobjects" element1="/src\/main\/java&lt;com.paypal.test.gops.admin.getdbdata{CIMongoDataManualExtractionDAO.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1440053634057" units="1" version="1.0"/>
+</session>

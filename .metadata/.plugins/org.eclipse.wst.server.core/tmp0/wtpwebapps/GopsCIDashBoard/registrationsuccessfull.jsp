@@ -7,6 +7,6 @@
 <title>You Have Successfully Completed The Registration</title>
 </head>
 <body>
-
+Hurray! Registration Successful for The Team:<%=request.getAttribute("teamName") %>
 </body>
 </html>

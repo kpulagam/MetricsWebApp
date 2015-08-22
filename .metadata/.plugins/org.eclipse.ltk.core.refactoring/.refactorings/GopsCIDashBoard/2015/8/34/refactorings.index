@@ -12,3 +12,31 @@
 1439806525668	Rename resource 'setBean.jsp'
 1439806535504	Rename resource 'getBean.jsp'
 1439813106338	Rename resource 'cidata.jsp'
+1439981708392	Delete element
+1439981713494	Delete element
+1439981721902	Delete element
+1439981773538	Delete element
+1439981776361	Delete element
+1439981935074	Delete element
+1439981938428	Delete element
+1439981940939	Delete element
+1439981943513	Delete element
+1440053660347	Delete element
+1440059700880	Rename type 'CIMongoDataManualExtractionDAO'
+1440060106152	Move compilation unit
+1440060152924	Delete element
+1440073743105	Rename source folder 'src'
+1440073864875	Move package
+1440073866995	Move package
+1440073872895	Move file
+1440073881715	Delete element
+1440073886715	Delete element
+1440073903615	Delete element
+1440074073444	Delete element
+1440075224838	Delete element
+1440081430142	Move 'databaseconfig.properties' to 'WebContent'
+1440232577420	Delete element
+1440241969264	Rename resource 'statics.jsp'
+1440242498065	Rename resource 'unathourised.jsp'
+1440243648100	Delete element
+1440247047877	Delete element

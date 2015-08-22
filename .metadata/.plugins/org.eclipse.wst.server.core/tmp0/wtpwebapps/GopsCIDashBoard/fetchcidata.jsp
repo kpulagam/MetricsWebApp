@@ -16,12 +16,29 @@
 <body>
 
 <form action="/GopsCIDashBoard/CIDashBoardHome" method="post" name="submitform">
-<select name="Suite Name" >
+<select name="sName" >
 	<option >AdminDevelopBranchCITestSuite</option>
 	<option>AdminReleaseBranchCITestSuite</option>
 	<option>MasterBranchCITestSuite</option>
 </select>
 <br/>
+<select name="runNum" >
+	<option>0</option>
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	<option>6</option>
+	<option>7</option>
+	<option>8</option>
+	<option>9</option>
+	<option>10</option>
+</select>
+<br/>
+
+<input type="radio" name="gLRun" value="getLatestRun">Get Latest Run<br>
+ Build ID <input type="text" name="runNum1"><br>
 
 <input type="submit" value="GetCIData" />
 

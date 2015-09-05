@@ -1,0 +1,21 @@
+package databasebeanstest;
+
+import java.io.IOException;
+
+import org.bson.Document;
+
+import databasebeans.GetCIData;
+
+public class GetCIDatatest {
+
+	public static void main(String[] args) throws IOException {
+		GetCIData getCIData = new GetCIData();
+		for(Document d :getCIData.getMultipleRunsFailures(10,"AdminCITestSuite")){
+			
+			System.out.println(d);
+		}
+		
+
+	}
+
+}

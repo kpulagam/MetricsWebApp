@@ -1,0 +1,15 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+import java.util.List;
+
+import org.bson.Document;
+
+public interface GETCIDataDAO {
+
+	int getLatestBuildID(String suiteName);
+
+	List<Document> getMultipleRunsFailures(int numberOfRuns, String suiteName);
+
+	List<Document> getFailuresForBuildId(String suiteName, int buildID);
+
+}

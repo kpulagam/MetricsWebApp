@@ -1,0 +1,5 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+public class OracleCIDataDAO implements GetCIDataDAO {
+
+}

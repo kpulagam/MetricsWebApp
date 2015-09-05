@@ -1,0 +1,39 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bson.Document;
+
+public class OracleCIDataDAO implements GetCIDataDAO {
+	
+	
+	
+
+	@Override
+	public int getLatestBuildID(String suiteName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Document> getMultipleRunsFailures() {
+		// TODO Auto-generated method stub
+		Document doc = new Document();
+		doc.append("My Name ", "Kishore");
+		List<Document> List = new ArrayList<>();
+		List.add(doc);
+		return List;
+	}
+
+	@Override
+	public List<Document> getFailuresForBuildId(String suiteName, int buildID) {
+		
+		Document doc = new Document();
+		doc.append("My Name ", "Kishore");
+		List<Document> List = new ArrayList<>();
+		List.add(doc);
+		return List;
+	}
+
+}

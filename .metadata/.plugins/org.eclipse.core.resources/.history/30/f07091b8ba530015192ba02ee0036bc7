@@ -1,0 +1,9 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+//Mongo Registration details DAO
+public class RegistrationDAO {
+	
+	public void getTeamName(){
+		
+	}
+
+}

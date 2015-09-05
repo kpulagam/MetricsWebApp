@@ -1,0 +1,21 @@
+package databasebeanstest;
+
+import java.io.IOException;
+
+import org.bson.Document;
+
+import com.paypal.test.gops.admin.cidashboard.model.GetCIDataDAO;
+
+public class GetCIDatatest {
+
+	public static void main(String[] args) throws IOException {
+		GetCIDataDAO getCIData = new GetCIDataDAO();
+		for(Document d :getCIData.getMultipleRunsFailures(2,"AdminCITestSuite")){
+			
+			System.out.println(d);
+		}
+		
+
+	}
+
+}

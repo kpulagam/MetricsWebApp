@@ -11,7 +11,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>CIDashBoardHomePageController</servlet-name>
-    <servlet-class>dashboardcontroller.CIDashBoardHomePageController</servlet-class>
+    <servlet-class>com.paypal.test.gops.admin.cidashboard.controller.CIDashBoardHomePageController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CIDashBoardHomePageController</servlet-name>

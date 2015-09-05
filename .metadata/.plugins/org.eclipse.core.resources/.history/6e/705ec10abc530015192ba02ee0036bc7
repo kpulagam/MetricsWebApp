@@ -1,0 +1,9 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+public interface DashBoardDAOFactory {
+
+	CIDataDAO getCIDataDAO();
+
+	RegistrationDAO getRegistrationDAO();
+
+}

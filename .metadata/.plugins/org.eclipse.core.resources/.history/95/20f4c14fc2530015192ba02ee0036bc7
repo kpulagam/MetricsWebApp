@@ -1,0 +1,17 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+public class OracleDAOFactory extends DashBoardDAOFactory {
+
+	@Override
+	public OracleCIDataDAO getCIDataDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OracleRegistrationDAO getRegistrationDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+public interface RegestrationDetailsDAO {
+
+	String getTeamName();
+
+}

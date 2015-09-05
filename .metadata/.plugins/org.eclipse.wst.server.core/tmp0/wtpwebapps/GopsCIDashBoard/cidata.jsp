@@ -15,13 +15,13 @@
 
 
 
-<%@ page  import="databasebeans.*,org.bson.Document" %> 
+<%@ page  import="com.paypal.test.gops.admin.cidashboard.model.*,org.bson.Document" %> 
 <%
 
-GetCIData dat = (GetCIData)session.getAttribute("ciData");
+GetCIDataDAO dat = (GetCIDataDAO)session.getAttribute("ciData");
 
 for(Document d:dat.getFailuresForBuildId("AdminCITestSuite", 10)){
-	out.println(d.get("ClassName"));
+	out.println(d.get("My Name"));
 	out.println(d.get("Status"));
 	out.println("\n");
 	out.println(d.get("Methods"));

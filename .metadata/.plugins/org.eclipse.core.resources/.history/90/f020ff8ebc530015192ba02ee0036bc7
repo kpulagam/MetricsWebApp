@@ -1,0 +1,15 @@
+package com.paypal.test.gops.admin.cidashboard.model;
+
+public abstract class DashBoardDAOFactory {
+	
+	public static final int MONGO = 0;
+	public static final int ORACLE = 1;
+	
+
+	public abstract CIDataDAO getCIDataDAO();
+
+	public abstract RegistrationDAO getRegistrationDAO();
+	
+	public static DashBoardDAOFactory
+
+}

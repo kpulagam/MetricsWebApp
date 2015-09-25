@@ -110,33 +110,50 @@ public class MongoGetCIDataDAO implements GetCIDataDAO {
 			int j = 1;
 			List<Document> evenList = new ArrayList<>();
 			List<Document> oddList = new ArrayList<>();
+			boolean isFirstIteration=true;
 
 			while (j < numberOfRuns) {
 
 				Bson oddfilter = and(eq("BuildNumber", buildNumber), eq("Status", "Failed"));
 				testRunDB.getCollection(suiteName).find(oddfilter).projection(projection).into(oddList);
 
-				if (finalList.isEmpty()) {
-
+				if (finalList.isEmpty()) {					
 					Bson evenfilter = and(eq("BuildNumber", --buildNumber), eq("Status", "Failed"));
 					testRunDB.getCollection(suiteName).find(evenfilter).projection(projection).into(evenList);
 
 				} else {
+					isFirstIteration = false;
 					evenList.addAll(finalList);
 					finalList.clear();
 
 				}
-
-				for (Document oddDoc : oddList) {
+				
+				if(isFirstIteration){
 					for (Document evenDoc : evenList) {
-						if (evenDoc.get("ClassName").equals(oddDoc.get("ClassName"))) {
-							finalList.add(evenDoc);
+						for (Document oddDoc : oddList) {
+							if (oddDoc.get("ClassName").equals(evenDoc.get("ClassName"))) {
+								finalList.add(oddDoc);
+							}
+
+						}
+
+					}
+				}
+				else{
+					for (Document oddDoc : oddList) {
+						for (Document evenDoc : evenList) {
+							if (evenDoc.get("ClassName").equals(oddDoc.get("ClassName"))) {
+								finalList.add(evenDoc);
+							}
+
 						}
 
 					}
 
+					
 				}
 
+				
 				j++;
 				buildNumber--;
 

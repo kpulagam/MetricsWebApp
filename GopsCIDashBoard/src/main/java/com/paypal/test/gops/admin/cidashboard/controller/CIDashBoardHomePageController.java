@@ -34,15 +34,14 @@ public class CIDashBoardHomePageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession newSession = request.getSession();
-		
-		DashBoardDAOFactory daoFactory = DashBoardDAOFactory.getDAOFactroy(DashBoardDAOFactory.MONGO);		
+
+		DashBoardDAOFactory daoFactory = DashBoardDAOFactory.getDAOFactroy(DashBoardDAOFactory.MONGO);
 		GetCIDataDAO ciData = (GetCIDataDAO) newSession.getAttribute("ciData");
-		
+
 		if (ciData == null) {
-			ciData =daoFactory.getCIDataDAO();
+			ciData = daoFactory.getCIDataDAO();
 		}
-		
-		
+
 		newSession.setAttribute("ciData", ciData);
 		String action = request.getParameter("action");
 
@@ -97,7 +96,7 @@ public class CIDashBoardHomePageController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		ServletContext context = getServletContext();
 		Integer hits = (Integer) context.getAttribute("hits");
 		if (hits == null) {
@@ -128,8 +127,6 @@ public class CIDashBoardHomePageController extends HttpServlet {
 		// ciData is the GetCIDataBean object which is used across the pages in
 		// one session
 		if (suite != null) {
-			
-			
 
 			page = "/cidata.jsp";
 
@@ -173,6 +170,16 @@ public class CIDashBoardHomePageController extends HttpServlet {
 			} else {
 				page = "/unauthorised.jsp";
 			}
+
+		}
+
+		String runNum = request.getParameter("runNum");
+		String sName = request.getParameter("sName");
+		if (runNum != null && sName != null) {
+			context.setAttribute("runNum", runNum);
+			context.setAttribute("sName", sName);
+			System.out.println(runNum);
+			System.out.println(sName);
 
 		}
 
